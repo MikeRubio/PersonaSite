@@ -1,13 +1,22 @@
-import { Eye } from "lucide-react";
+import { Eye, PlayCircle } from "lucide-react";
+import { useState } from "react";
 
 interface HeroSectionProps {
   onSignUpClick: () => void;
 }
 
 export function HeroSection({ onSignUpClick }: HeroSectionProps) {
+  const [showInstallGuide, setShowInstallGuide] = useState(false);
+
   const handleDownloadExtension = () => {
-    // This would link to the Chrome Web Store when published
-    window.open("https://chrome.google.com/webstore", "_blank");
+    // Replace with your actual ZIP file URL
+    window.open("/PersonaLens-extension.zip", "_blank");
+    setShowInstallGuide(true);
+  };
+
+  const handleWatchDemo = () => {
+    // Replace with your actual demo video URL
+    window.open("https://youtu.be/8y-Hfi5-mJk", "_blank");
   };
 
   return (
@@ -45,11 +54,52 @@ export function HeroSection({ onSignUpClick }: HeroSectionProps) {
               onClick={handleDownloadExtension}
               className="border border-darkAccent text-darkAccent px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent hover:text-darkText transition w-full sm:w-auto"
             >
-              Download Extension
+              Download ZIP
+            </button>
+            <button
+              onClick={handleWatchDemo}
+              className="flex items-center justify-center gap-2 bg-darkCard border border-darkAccent2 text-darkAccent2 px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent2 hover:text-darkText transition w-full sm:w-auto"
+            >
+              <PlayCircle className="w-5 h-5" />
+              Watch Demo Video
             </button>
           </div>
         </div>
       </div>
+      {/* Install guide modal */}
+      {showInstallGuide && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-darkCard rounded-2xl p-8 max-w-lg w-full border border-darkAccent shadow-glass relative">
+            <button
+              onClick={() => setShowInstallGuide(false)}
+              className="absolute top-4 right-4 text-darkSubtle hover:text-darkAccent"
+            >
+              ×
+            </button>
+            <h2 className="text-2xl font-bold text-darkText mb-4">
+              How to Install the Extension
+            </h2>
+            <ol className="list-decimal list-inside text-darkText space-y-2 text-base">
+              <li>Download the ZIP file above and extract it to a folder.</li>
+              <li>
+                Open <span className="font-mono">chrome://extensions</span> in
+                your browser.
+              </li>
+              <li>
+                Enable <b>Developer mode</b> (top right).
+              </li>
+              <li>
+                Click <b>“Load unpacked”</b> and select the extracted folder.
+              </li>
+              <li>PersonaLens is now ready to use!</li>
+            </ol>
+            <p className="mt-4 text-darkSubtle text-sm">
+              Once the extension is approved, you’ll be able to install it
+              directly from the Chrome Web Store.
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
