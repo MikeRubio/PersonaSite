@@ -8,12 +8,6 @@ interface HeroSectionProps {
 export function HeroSection({ onSignUpClick }: HeroSectionProps) {
   const [showInstallGuide, setShowInstallGuide] = useState(false);
 
-  const handleDownloadExtension = () => {
-    // Replace with your actual ZIP file URL
-    window.open("/PersonaLens-extension.zip", "_blank");
-    setShowInstallGuide(true);
-  };
-
   const handleWatchDemo = () => {
     // Replace with your actual demo video URL
     window.open("https://youtu.be/8y-Hfi5-mJk", "_blank");
@@ -50,19 +44,14 @@ export function HeroSection({ onSignUpClick }: HeroSectionProps) {
             >
               Start Testing for Free
             </button>
-            <button
-              onClick={handleDownloadExtension}
-              className="border border-darkAccent text-darkAccent px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent hover:text-darkText transition w-full sm:w-auto"
+            <a
+              href="https://chromewebstore.google.com/detail/cglgioahlckbpkobooplpklngonaocfg?utm_source=item-share-cb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-darkAccent text-darkAccent px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent hover:text-darkText transition w-full sm:w-auto flex items-center justify-center"
             >
-              Download ZIP
-            </button>
-            <button
-              onClick={handleWatchDemo}
-              className="flex items-center justify-center gap-2 bg-darkCard border border-darkAccent2 text-darkAccent2 px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent2 hover:text-darkText transition w-full sm:w-auto"
-            >
-              <PlayCircle className="w-5 h-5" />
-              Watch Demo Video
-            </button>
+              Download Extension
+            </a>
           </div>
         </div>
       </div>
