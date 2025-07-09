@@ -104,11 +104,11 @@ async function handleAuth(e) {
         if (result.error) {
             alert(result.error.message)
         } else {
-            hideModal()
-            if (isSignUp) {
-                alert('Account created! Please check your email to verify your account.')
-            }
-            showDashboard(result.data.user)
+          hideModal();
+          // if (isSignUp) {
+          //     alert('Account created! Please check your email to verify your account.')
+          // }
+          showDashboard(result.data.user);
         }
     } catch (error) {
         alert('An error occurred: ' + error.message)

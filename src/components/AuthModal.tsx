@@ -31,11 +31,11 @@ export function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
         setError(result.error.message);
       } else {
         onClose();
-        if (isSignUp) {
-          alert(
-            "Account created! Please check your email to verify your account."
-          );
-        }
+        // if (isSignUp) {
+        //   alert(
+        //     "Account created! Please check your email to verify your account."
+        //   );
+        // }
         // Reset form
         setEmail("");
         setPassword("");
