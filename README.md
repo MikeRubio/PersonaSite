@@ -1,4 +1,5 @@
 # 🕵️‍♀️ PersonaLens
+[![Netlify Status](https://api.netlify.com/api/v1/badges/781a7c14-b0ac-4195-b35d-db3dbd34252b/deploy-status)](https://app.netlify.com/projects/personalens/deploys)
 
 **PersonaLens** is a browser extension and platform that helps developers and product teams test the accessibility of their websites using real-world personas and AI. It highlights the hidden friction real users face — whether due to disabilities, device constraints, or language barriers.
 
