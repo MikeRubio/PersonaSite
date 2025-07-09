@@ -56,30 +56,30 @@ export function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-      <div className="bg-glass backdrop-blur-lg rounded-2xl p-8 max-w-md w-full mx-4 border border-darkBorder shadow-glass relative">
+      <div className="bg-gray-900 backdrop-blur-lg rounded-2xl p-8 max-w-md w-full mx-4 border border-gray-700 shadow-xl relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-darkSubtle hover:text-darkText"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white"
         >
           <X className="w-6 h-6" />
         </button>
 
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-extrabold text-darkText mb-2">
+          <h2 className="text-2xl font-extrabold text-white mb-2">
             {isSignUp ? "Create Your Account" : "Welcome Back"}
           </h2>
-          <p className="text-darkSubtle">Get your API key to start testing</p>
+          <p className="text-gray-400">Get your API key to start testing</p>
         </div>
 
         {error && (
-          <div className="bg-red-900 border border-red-700 rounded-lg p-3 mb-4">
-            <p className="text-sm text-red-200">{error}</p>
+          <div className="bg-red-800 border border-red-600 rounded-lg p-3 mb-4">
+            <p className="text-sm text-red-100">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-darkSubtle mb-1">
+            <label className="block text-sm font-medium text-gray-300 mb-1">
               Email
             </label>
             <input
@@ -87,11 +87,11 @@ export function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-darkBorder rounded-lg bg-darkCard text-darkText focus:outline-none focus:ring-2 focus:ring-darkAccent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-darkSubtle mb-1">
+            <label className="block text-sm font-medium text-gray-300 mb-1">
               Password
             </label>
             <input
@@ -99,13 +99,13 @@ export function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-darkBorder rounded-lg bg-darkCard text-darkText focus:outline-none focus:ring-2 focus:ring-darkAccent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-darkAccent to-darkAccent2 text-darkText py-2 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
           >
             {loading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
           </button>
@@ -114,7 +114,7 @@ export function AuthModal({ isOpen, onClose, initialMode }: AuthModalProps) {
         <div className="mt-4 text-center">
           <button
             onClick={toggleMode}
-            className="text-darkAccent hover:text-darkAccent2"
+            className="text-purple-400 hover:text-pink-400 font-medium"
           >
             {isSignUp
               ? "Already have an account? Sign in"

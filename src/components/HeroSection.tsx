@@ -1,94 +1,105 @@
-import { Eye, PlayCircle } from "lucide-react";
-import { useState } from "react";
+import React from "react";
+import {
+  Eye,
+  Download,
+  Play,
+  ArrowRight,
+  CheckCircle,
+  Chrome,
+} from "lucide-react";
+import { DemoVideoSection } from "./DemoVideoSection";
 
 interface HeroSectionProps {
   onSignUpClick: () => void;
 }
 
 export function HeroSection({ onSignUpClick }: HeroSectionProps) {
-  const [showInstallGuide, setShowInstallGuide] = useState(false);
-
-  const handleWatchDemo = () => {
-    // Replace with your actual demo video URL
-    window.open("https://youtu.be/8y-Hfi5-mJk", "_blank");
-  };
-
   return (
-    <section className="relative py-28 bg-darkBg overflow-hidden">
-      {/* Background gradient glow */}
-      <div
-        aria-hidden
-        className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-gradient-to-br from-darkAccent/30 via-darkAccent2/20 to-transparent rounded-full blur-3xl pointer-events-none"
-      />
-      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glass backdrop-blur-xl border border-darkBorder rounded-3xl shadow-glass px-10 py-16 flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-darkAccent to-darkAccent2 rounded-2xl flex items-center justify-center mb-6 shadow-accent">
-            <Eye className="w-9 h-9 text-darkText" />
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto">
+          {/* Logo and brand */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl">
+              <Eye className="w-8 h-8 text-white" />
+            </div>
+            <h1 className="ml-4 text-3xl font-bold text-white">PersonaLens</h1>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-darkText mb-6 tracking-tight">
-            See Your Website
+
+          {/* Main headline */}
+          <h2 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+            Test Your Website
             <br />
-            <span className="bg-gradient-to-r from-darkAccent to-darkAccent2 bg-clip-text text-transparent">
-              Through Every User’s Eyes
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Through Every User's Eyes
             </span>
-          </h1>
-          <p className="text-lg sm:text-xl text-darkSubtle mb-10 max-w-2xl">
-            PersonaLens reveals accessibility and usability gaps by letting you
-            test your site as real users experience it—across abilities,
-            languages, and devices.
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            AI-powered accessibility testing that reveals how users with
+            different abilities, languages, and needs experience your website.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+
+          {/* Key benefits */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {[
+              "Free for indie developers",
+              "6 different user personas",
+              "AI-powered insights",
+              "Chrome extension",
+            ].map((benefit, index) => (
+              <div
+                key={index}
+                className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20"
+              >
+                <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                <span className="text-white text-sm font-medium">
+                  {benefit}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <button
               onClick={onSignUpClick}
-              className="bg-gradient-to-r from-darkAccent to-darkAccent2 text-darkText px-8 py-3 rounded-xl font-semibold shadow-accent hover:opacity-90 transition w-full sm:w-auto"
+              className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 flex items-center"
             >
-              Start Testing for Free
+              Get Your Free API Key
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
+
             <a
               href="https://chromewebstore.google.com/detail/cglgioahlckbpkobooplpklngonaocfg?utm_source=item-share-cb"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-darkAccent text-darkAccent px-8 py-3 rounded-xl font-semibold hover:bg-darkAccent hover:text-darkText transition w-full sm:w-auto flex items-center justify-center"
+              className="group border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center backdrop-blur-sm"
             >
+              <Chrome className="mr-2 w-5 h-5" />
               Download Extension
             </a>
           </div>
+
+          {/* Demo video */}
+          <DemoVideoSection />
         </div>
       </div>
-      {/* Install guide modal */}
-      {showInstallGuide && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="bg-darkCard rounded-2xl p-8 max-w-lg w-full border border-darkAccent shadow-glass relative">
-            <button
-              onClick={() => setShowInstallGuide(false)}
-              className="absolute top-4 right-4 text-darkSubtle hover:text-darkAccent"
-            >
-              ×
-            </button>
-            <h2 className="text-2xl font-bold text-darkText mb-4">
-              How to Install the Extension
-            </h2>
-            <ol className="list-decimal list-inside text-darkText space-y-2 text-base">
-              <li>Download the ZIP file above and extract it to a folder.</li>
-              <li>
-                Open <span className="font-mono">chrome://extensions</span> in
-                your browser.
-              </li>
-              <li>
-                Enable <b>Developer mode</b> (top right).
-              </li>
-              <li>
-                Click <b>“Load unpacked”</b> and select the extracted folder.
-              </li>
-              <li>PersonaLens is now ready to use!</li>
-            </ol>
-            <p className="mt-4 text-darkSubtle text-sm">
-              Once the extension is approved, you’ll be able to install it
-              directly from the Chrome Web Store.
-            </p>
-          </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
-      )}
+      </div>
     </section>
   );
 }
